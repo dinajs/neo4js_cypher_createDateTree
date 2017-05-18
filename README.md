@@ -1,5 +1,22 @@
 # Neo4js Cypher CreateDateTree
 
+
+##Constraints
+Before you create the Data Tree it in important that you make a few Constraints:
+
+```
+CREATE CONSTRAINT ON (y:Years)
+ASSERT y.year IS UNIQUE
+
+CREATE CONSTRAINT ON (m:Months)
+ASSERT m.date_txt IS UNIQUE
+
+CREATE CONSTRAINT ON (d:Days)
+ASSERT d.date_txt IS UNIQUE
+
+```
+##Now for the Cypher code to create the Date Tree:
+
 ```
 WITH range(2016, 2018) AS Years, range(10,12) AS Months,range(1,9)AS LowNum
 FOREACH(year IN Years | 
